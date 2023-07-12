@@ -105,10 +105,30 @@ p + ggtitle("n = 9") +
 print(paste('mean = ', mean(my1000$k3),' sd = ',sd(my1000$k3)))
 ```
 take the standard deviation and put it in the data that is from the cetral limit. The standard deviation shrinks as the number gets higher example 4 is divided by 2, 9 is divided by 3. 16 divided by 4 and so on. 
-the standard deviation is sd = 14.1672561441101, the expected value is the standard deviation divided by square root of the sample size. the mean is going to stay the same and the standard deviation is going to shrink. the original standard deviation was 41.7116842215775. we expect 14 and we get `r sd(my1000$k3)` 
+the standard deviation is sd = 14.1672561441101, the expected value is the standard deviation divided by square root of the sample size. the mean is going to stay the same and the standard deviation is going to shrink. the original standard deviation was 41.7116842215775. we expect 14 and we get `r sd(my1000$k3)`   
 
 
+```{r}
+numb = 16
+Hdata = Homers_data[sample(1:1000,size=numb*1000, replace=T),"kkardashtemp"]
+mdata  <-matrix(Hdata,nrow=1000,ncol=numb)
+x.avg <- apply(mdata,1,mean)
+my1000$k4 = x.avg
 
+
+p <- ggplot(my1000, aes(x=k4),col=sex) + 
+  geom_density() +
+
+# Add mean line
+ geom_vline(aes(xintercept=mean(k4)),
+            color="blue", linetype="dashed", size=1)
+p + ggtitle("n = 16") +
+  xlab("temperature") + ylab(" density")
+
+print(paste('mean = ', mean(my1000$k4),' sd = ',sd(my1000$k4)))
+
+```
+ 
 
 
 
