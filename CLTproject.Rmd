@@ -150,7 +150,7 @@ p + ggtitle("n = 25") +
 print(paste('mean = ', mean(my1000$k5),' sd = ',sd(my1000$k5)))
 
 ```
-  
+the standard deviation should be a fifth of what it originally was, this sd =  8.28125180451904 and we expected 8 
 
 
 # Now finish by adding blocks with numb being 9, then 16, 25, and 36. be sure to mention how the standard deviation progresses as the sample size changes,
